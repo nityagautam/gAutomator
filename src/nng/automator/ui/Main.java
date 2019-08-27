@@ -4,6 +4,7 @@ package nng.automator.ui;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
@@ -44,9 +45,9 @@ public class Main extends Settings {
 		//Initialize a main Frame and set up the window.
 		mainFrame = new JFrame("Automator ");
 		mainFrame.setAlwaysOnTop(true);
-		mainFrame.setResizable(false);
+		//mainFrame.setResizable(false);
 		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		mainFrame.setPreferredSize(new Dimension(Configurations.WIDTH, Configurations.HEIGHT));
+		mainFrame.setPreferredSize(new Dimension(Configurations.WIDTH+50, Configurations.HEIGHT));
 		//mainFrame.setLocationRelativeTo(null);
 		
 		// Initialize the working panel
@@ -80,30 +81,33 @@ public class Main extends Settings {
 		JMenuBar menuBar = new JMenuBar();
 		JMenu menuAction = new JMenu("Action");
 		JMenu menuHelp = new JMenu("Help");
+		JMenu menuDemo = new JMenu("Demo");
 		
 		// Create and Add Menu item to Menu
 		JMenuItem demo = new JMenuItem("Start Demo Project");
 		JMenuItem explorer = new JMenuItem("Explorer");
-		JMenuItem systemInfo = new JMenuItem("System Info");
 		JMenuItem settings = new JMenuItem("Settings");
+		JMenuItem systemInfo = new JMenuItem("System Info");
 		JMenuItem about = new JMenuItem("About");
 		// Add menu items to the respected menus
 		// Adding to Action Menu
-		menuAction.add(systemInfo); menuAction.addSeparator(); 
 		menuAction.add(explorer); menuAction.addSeparator();
 		menuAction.add(settings); menuAction.addSeparator();
 		// Adding to Help Menu
 		menuHelp.add(about); menuHelp.addSeparator();
-		menuHelp.add(demo); menuHelp.addSeparator();
+		menuHelp.add(systemInfo); menuHelp.addSeparator();
+		// Adding to Demo menu
+		menuDemo.add(demo); menuDemo.addSeparator();
 		
 		// Add menu to menu bar
 		menuBar.add(menuAction); 
 		menuBar.add(menuHelp);
+		menuBar.add(menuDemo);
 		
 		// Menubar settings
-		menuBar.setBackground(Color.DARK_GRAY);
-		menuBar.setForeground(Color.WHITE);
-		menuAction.setForeground(Color.WHITE); menuHelp.setForeground(Color.WHITE);
+		//menuBar.setBackground(Color.BLACK);
+		//menuBar.setForeground(Color.WHITE);
+		//menuAction.setForeground(Color.WHITE); menuHelp.setForeground(Color.WHITE);
 		
 		// Add MenuEvent to the menu item buttons
 		about.addActionListener(new ActionListener() { @Override public void actionPerformed(ActionEvent e) { Listener.performAbout(mainFrame); Listener.log("Clicked on About menu."); } });
@@ -120,7 +124,7 @@ public class Main extends Settings {
 		// Add other Components to this setting window
 			// Tabbed Pane
 			JTabbedPane tabbedPaneForWorkPanel = new JTabbedPane();
-			tabbedPaneForWorkPanel.setBounds(0, 0, Configurations.WIDTH, Configurations.HEIGHT);
+			tabbedPaneForWorkPanel.setBounds(0, 0, Configurations.WIDTH-50, Configurations.HEIGHT);
 			// TextArea for log and Notes
 			JTextArea noteTxtArea = new JTextArea(":: Your Notes :: \n", Configurations.ROW, Configurations.COLUMN); noteTxtArea.setEditable(true);
 			logTxtArea = new JTextArea(":: Logs ::\n", Configurations.ROW, Configurations.COLUMN); logTxtArea.setEditable(false);
@@ -146,9 +150,21 @@ public class Main extends Settings {
 	protected static void infoPanel() {
 		//Create an information panel along with a label for date and time
 		JPanel infoPanel = new JPanel();
-		JLabel authorLabel = new JLabel("   FROM: NITYANARAYAGAUTAM", SwingConstants.RIGHT);
-		authorLabel.setForeground(Color.GRAY);
+		// Set layout for infoPanel
+		infoPanel.setLayout(new GridLayout(1, 3));
+		// Setting panel background color
 		infoPanel.setBackground(Color.DARK_GRAY);
+		
+		// "  Not Ready", "  Ready", "  In Progress"
+		//JLabel statusLabel = new JLabel(" Not Ready ", SwingConstants.LEFT); statusLabel.setForeground(Color.YELLOW);
+		JLabel statusLabel = new JLabel(" Ready ", SwingConstants.LEFT); statusLabel.setForeground(Color.GREEN);
+		//JLabel statusLabel = new JLabel(" In Progress ", SwingConstants.LEFT); statusLabel.setForeground(Color.RED);
+		JLabel authorLabel = new JLabel(" NITYA NARAYAN GAUTAM ", SwingConstants.RIGHT);
+		authorLabel.setForeground(Color.GRAY);
+		
+		
+		infoPanel.add(statusLabel);
+		infoPanel.add(new JLabel(""));
 		infoPanel.add(authorLabel);
 		
 		// Add to main frame

@@ -9,7 +9,7 @@ public class Configurations {
 	public static int WIDTH = 900, HEIGHT = 600;
 	
 	// TEXTAREA ROW/COLUMN FOR MAIN WINDOW
-	public static int ROW = 30, COLUMN = 79;
+	public static int ROW = 30, COLUMN = 50;
 	
 	// TEXTAREA SIZE FOR THE MSGBOX
 	public static int MSG_ROW = 10, MSG_COLUMN = 70;
