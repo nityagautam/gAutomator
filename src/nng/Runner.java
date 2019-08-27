@@ -13,6 +13,7 @@ public class Runner{
 		//w.startFrame();
 		
 		// AUTOMATION
+		//=================
 		String pgUrl = "https://wikipedia.com"; 
 		int maxWaitTime = 10;
 		String browser = "CHROME";
@@ -27,6 +28,9 @@ public class Runner{
 		
 		// Close driver
 		b.close();
+		
+		// Quit
+		b.getDriver().quit();
 	}
 
 }

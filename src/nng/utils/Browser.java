@@ -102,7 +102,7 @@ public class Browser {
 	 * ===================================================================================
 	 */
 	public String getPageUrl() { return this.pageUrl; }
-	public WebDriver getPageDriver() {return this.driver; }
+	public WebDriver getDriver() {return this.driver; }
 	public String getPageTitle() {return this.driver.getTitle(); }
 	public String getText(By by) {return this.driver.findElement(by).getText(); }
 	public String getElementAttribute(By by, String attribName) { return this.driver.findElement(by).getAttribute(attribName); }
