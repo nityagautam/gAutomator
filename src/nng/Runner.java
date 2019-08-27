@@ -16,8 +16,7 @@ public class Runner{
 		String pgUrl = "https://wikipedia.com"; 
 		int maxWaitTime = 10;
 		String browser = "CHROME";
-		//String driverLocation = "C:\\_DevOpsTools\\WebDriver\\chromedriver.exe";
-		String driverLocation = "/Users/nityagautam/WorkSpace/WebDrivers/chrome/chromedriver";
+		String driverLocation = "C:\\_DevOpsTools\\WebDriver\\chromedriver.exe";
 		Browser b = new Browser(pgUrl, maxWaitTime, browser, driverLocation);
 		
 		// Start
@@ -28,9 +27,6 @@ public class Runner{
 		
 		// Close driver
 		b.close();
-		
-		// Quit
-		b.getDriver().quit();
 	}
 
 }
